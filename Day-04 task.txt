@@ -1,0 +1,310 @@
+1.Do the below programs in anonymous function & IIFE ?
+a.Print odd numbers in an array
+b.Convert all the strings to title caps in a string array
+c.Sum of all numbers in an array
+d.Return all the prime numbers in an array
+e.Return all the palindromes in an array
+f.Return median of two sorted arrays of the same size.
+g.Remove duplicates from an array
+h.Rotate an array by k times
+
+a.Print odd numbers in an array
+
+// Anonymous Function
+
+let printOddNumbers = function(array) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] % 2 !== 0) {
+            console.log(array[i]);
+        }
+    }
+};
+([1, 2, 3, 4]);
+
+// Immediately Invoked Function Expression (IIFE)
+
+(function(array) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] % 2 !== 0) {
+            console.log(array[i]);
+        }
+    }
+})([1, 2, 3, 4]);
+
+b.Convert all the strings to title caps in a string array
+   
+// Anonymous Function
+
+function titleCase(str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+    } 
+    return str.join(' ');
+}
+console.log(titleCase("AJAY IS MY NAME"));
+
+// Immediately Invoked Function Expression (IIFE)
+
+(function(str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+    } 
+    console.log(str.join(' '));
+})("AJAY IS MY NAME");
+
+c.Sum of all numbers in an array 
+
+// Anonymous Function
+
+let sumArray = function(array) {
+    var sum = 0;
+    for (var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum;
+};
+console.log(sumArray([1, 2, 3, 4]));
+
+// Immediately Invoked Function Expression (IIFE)
+
+let sum = (function(array) {
+    var sum = 0;
+    for (var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum;
+})([1, 2, 3, 4]);
+  console.log(sum);
+
+d.Return all the prime numbers in an array
+    
+// Anonymous Function
+
+function findPrimes(numArray) {
+    numArray = numArray.filter((number) => {
+        for (var i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) return false;
+        }
+        return true;
+    });
+    console.log(numArray);
+}
+findPrimes([1, 2, 3, 4]);
+
+// Immediately Invoked Function Expression (IIFE)
+
+(function(numArray) {
+    numArray = numArray.filter((number) => {
+        for (var i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) return false;
+        }
+        return true;
+    });
+    console.log(numArray);
+})([1, 2, 3, 4]);
+                  
+e.Return all the palindromes in an array
+
+// is Palindrome function
+
+function isPalindrome(N) {
+    let str = "" + N;
+    let len = str.length;
+    for (let i = 0; i < parseInt(len / 2, 10); i++) {
+        if (str[i] !== str[len - 1 - i])
+            return false;
+    }
+    return true;
+}
+
+// Anonymous Function
+
+let checkArrayForPalindromes = function (arr, n) {
+    for (let i = 0; i < n; i++) {
+        let ans = isPalindrome(arr[i]);
+        if (ans === false)
+            return false;
+    }
+    return true;
+};
+console.log(checkArrayForPalindromes([121, 1331, 12321], 3)); // Output: true
+
+// Immediately Invoked Function Expression (IIFE)
+
+(function (arr, n) {
+    for (let i = 0; i < n; i++) {
+        let ans = isPalindrome(arr[i]);
+        if (ans === false)
+            return false;
+    }
+    return true;
+})([121, 1331, 12321], 3);
+
+f.Return median of two sorted arrays of same size
+
+
+// Anonymous Function
+
+function findMedianSortedArrays(nums1, nums2) {
+    let merged = nums1.concat(nums2);
+    merged.sort((a, b) => a - b);
+    let mid = Math.floor(merged.length / 2);
+    if (merged.length % 2 === 0) {
+        return (merged[mid - 1] + merged[mid]) / 2;
+    } else {
+        return merged[mid];
+    }
+}
+console.log(findMedianSortedArrays([1, 3, 5], [2, 4, 6])); 
+
+// Immediately Invoked Function Expression (IIFE)
+
+let median = (function(nums1, nums2) {
+    let merged = nums1.concat(nums2);
+    merged.sort((a, b) => a - b);
+    let mid = Math.floor(merged.length / 2);
+    if (merged.length % 2 === 0) {
+        return (merged[mid - 1] + merged[mid]) / 2;
+    } else {
+        return merged[mid];
+    }
+})([1, 3, 5], [2, 4, 6]);
+console.log(median); 
+
+g.Remove duplicates from an Array
+
+// Anonymous Function
+
+let removeDuplicates = function(array) {
+    let dup = [...new Set(array)];
+    console.log(dup);
+};
+removeDuplicates([1, 1, 2, 3, 4]);
+
+// Immediately Invoked Function Expression (IIFE)
+
+(function(array) {
+    let dup = [...new Set(array)];
+    console.log(dup);
+})([1, 1, 2, 3, 4]);
+
+h.Rotate an array by K times
+
+// Reverse function
+   function reverse(array, li, ri) {
+    while (li < ri) {
+        let temp = array[li];
+        array[li] = array[ri];
+        array[ri] = temp;
+        li++;
+        ri--;
+    }
+}
+// Anonymous Function
+   function rotateArray(array, k) {
+    k = k % array.length;
+    if (k < 0) {
+        k += array.length;
+    }
+
+    reverse(array, 0, array.length - k - 1);
+    reverse(array, array.length - k, array.length - 1);
+    reverse(array, 0, array.length - 1);
+}
+rotateArray([1, 2, 3, 4], 2);
+
+// Immediately Invoked Function Expression (IIFE)
+(function(array, k) {
+    k = k % array.length;
+    if (k < 0) {
+        k += array.length;
+    }
+
+    reverse(array, 0, array.length - k - 1);
+    reverse(array, array.length - k, array.length - 1);
+    reverse(array, 0, array.length - 1);
+})([1, 2, 3, 4], 2);
+
+
+2.Do the below programs in arrow functions?
+
+a.Print odd numbers in an array
+b.Convert all the strings to title caps in a string array
+c.Sum of all numbers in an array
+d.Return all the prime numbers in an array
+e.Return all the palindromes in an array
+
+a.Print odd numbers in an array
+
+// Using Arrow Function to Print Odd Numbers
+
+var y = [1, 2, 3, 4, 5, 6, 7];
+var odd = (array) => array.filter(num => num % 2 !== 0);
+console.log(odd(y)); // Output: [1, 3, 5, 7]
+
+b.Convert all the strings to title caps in a string array
+
+// Using Arrow Function to Convert Strings to Title Caps
+
+let str = "my name is Ajay";
+
+let convertToTitleCase = (str) => {
+    str = str.toLowerCase().split(' ');
+    for (let i = 0; i < str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    }
+    return str.join(' ');
+};
+
+console.log(convertToTitleCase(str)); 
+
+C.Sum of all numbers in an array
+
+// Using Arrow Function to Calculate Sum of Numbers in an Array
+
+var a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+var sum = (array) => array.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sum(a)); 
+
+d.Return all the prime numbers in an array
+
+// Using Arrow Function to Return Prime Numbers
+var n = 34;
+
+var findPrimeNumbers = (n) => {
+    var primes = [];
+    for (var i = 2; i <= n; i++) {
+        var flag = 0;
+        for (var j = 2; j < i; j++) {
+            if (i % j === 0) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag === 0) {
+            primes.push(i);
+        }
+    }
+    return primes;
+};
+
+console.log(findPrimeNumbers(n)); 
+
+e.Return all the palindromes in an array.
+
+// Using Arrow Function to Return Palindromes
+var isPalindrome = (str) => {
+    var reversed = str.split('').reverse().join('');
+    return str === reversed;
+};
+
+var arr = ["level", "hello", "radar", "world"];
+
+var returnPalindromes = (arr) => arr.filter(word => isPalindrome(word));
+
+console.log(returnPalindromes(arr)); 
+    
